@@ -1,20 +1,33 @@
-const STORE = [{
-        name: "apples",
-        checked: false
-    },
-    {
-        name: "oranges",
-        checked: false
-    },
-    {
-        name: "milk",
-        checked: true
-    },
-    {
-        name: "bread",
-        checked: false
-    }
-];
+const STORE = {
+    items: [{
+            name: "apples",
+            checked: false
+        }, {
+            name: "oranges",
+            checked: false
+        }, {
+            name: "milk",
+            checked: true
+        },
+        {
+            name: "bread",
+            checked: false
+        }
+    ],
+    hiddenCompleted: false
+};
+
+function toggleHideFilter(){
+    let newItems = 
+
+    renderShoppingList();
+}
+
+function hanndleToggleHideFilter(){
+    ('.js-hide-completed-toggle').on('click', function () {
+        toggleHideFilter();
+    })
+}
 
 function generateItemElement(item, itemIndex, template) {
     return `<li>${item.name}</li>`
@@ -23,7 +36,7 @@ function generateItemElement(item, itemIndex, template) {
 function generateShoppingItemsString(shoppinglist) {
     console.log('generateShoppingItemsString');
 
-    const items = shoppinglist.map((item, itemIndex) => 
+    const items = shoppinglist.map((item, itemIndex) =>
         generateItemElement(item, itemIndex)
     )
 
@@ -32,9 +45,9 @@ function generateShoppingItemsString(shoppinglist) {
 
 function renderShoppingList() {
 
-    let shoppingListItemsString = generateShoppingItemsString(STORE);
+    let filteredItems = STORE.items;
 
-    $('.js-shopping-list').html(shoppingListItemsString);
+    $('.js-shopping-list').html(filteredItems);
     // this function will be responsible for rendering the shopping list in
     // the DOM
     console.log('`renderShoppingList` ran');
